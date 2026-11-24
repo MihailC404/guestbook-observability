@@ -1,0 +1,11 @@
+route:
+  receiver: "fastapi-webhook"
+  group_wait: 5s
+  group_interval: 10s
+  repeat_interval: 1m
+
+receivers:
+  - name: "fastapi-webhook"
+    webhook_configs:
+      - url: "http://app:8000/alerts/webhook"
+        send_resolved: true

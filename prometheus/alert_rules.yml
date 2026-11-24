@@ -1,0 +1,10 @@
+groups:
+  - name: guestbook_alerts
+    rules:
+      - alert: HighRequestRate
+        expr: sum(rate(http_requests_total[1m])) > 10
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High request rate detected on guestbook"
